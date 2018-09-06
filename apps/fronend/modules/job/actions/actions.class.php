@@ -15,11 +15,23 @@ class jobActions extends sfActions
     /*$this->jobeet_jobs = Doctrine_Core::getTable('JobeetJob')
       ->createQuery('a')
       ->execute();*/
-      $q= Doctrine_Query::create()
-      ->from('JobeetJob j')
-      ->where('j.created_at > ?', date('Y-m-h:i:s', time() - 86940 * 30));
+      // $q= Doctrine_Query::create()
+      // ->from('JobeetJob j')
+      // // ->where('j.created_at > ?', date('Y-m-h:i:s', time() - 86940 * 30));
+
+      // //cambiamos la sentencia de where para que traiga las publicaciones vigentes
+      // ->where('j.expires_at > ?', date('Y-m-d h:i:s', time()));
      
-      $this->jobeet_jobs = $q->execute();
+      // $this->jobeet_jobs = $q->execute();
+
+      // $q = Doctrine_Query::create()
+      // ->from('JobeetJob j')
+      // ->where('j.expires_at > ?', date('Y-m-d h:i:s', time()));
+   
+      // $this->jobeet_jobs = $q->execute();
+
+      // $this->jobeet_jobs = Doctrine_Core::getTable('JobeetJob')->getActiveJobs();
+      $this->categories = Doctrine_Core::getTable('JobeetCategory')->getWithJobs();
 
   }
 
