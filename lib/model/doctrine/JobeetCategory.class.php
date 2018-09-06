@@ -12,6 +12,11 @@
  */
 class JobeetCategory extends BaseJobeetCategory
 {
+    public function getSlug()
+    {
+      return Jobeet::slugify($this->getName());
+    }
+    
     public function getActiveJobs($max)
     {
       $q = Doctrine_Query::create()
