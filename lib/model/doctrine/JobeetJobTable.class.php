@@ -28,6 +28,13 @@ class JobeetJobTable extends Doctrine_Table
       $q->andWhere('j.expires_at > ?', date('Y-m-d h:i:s', time()))
         ->addOrderBy('j.expires_at DESC');
      
-      return $q->execute();
+         return $q->execute();
+    }
+
+    public function retrieveActiveJob(Doctrine_Query $q)
+    {
+     $q->andWhere('a.expires_at > ?', date('Y-m-d h:i:s', time()));
+ 
+        return $q->fetchOne();
     }
 }
