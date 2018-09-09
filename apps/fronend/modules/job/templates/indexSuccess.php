@@ -21,6 +21,13 @@
           </tr>
         <?php  endforeach; ?>
       </table>
+      <?php if(($count=$category->countActiveJobs() - 
+          sfConfig::get('app_max_on_homepage')) > 0):?>
+        <div class="more_jobs">
+          and <?php echo link_to($count, 'category', $category)?>
+          more...
+        </div>  
+      <?php endif; ?>  
     </div> 
     <?php endforeach; ?> 
 </div>
