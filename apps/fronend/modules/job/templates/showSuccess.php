@@ -5,6 +5,9 @@
   'title' ,
    sprintf ( '% s está buscando un% s' , $job -> getCompany ( ) , $job -> getPosition ( ) ) ) 
 ?>
+<?php if($sf_request->getParameter('token')== $job->getToken()):?>
+  <?php include_partial('job/admin',array('job' => $job))?>
+<?php endif; ?>
  
 <div id = "job" >
   <h1> <?php echo  $job -> getCompany ( ) ?> </h1>
@@ -36,7 +39,7 @@
   </div>
  
   <div style = "relleno: 20px 0" >
-    <a href= "<?php echo url_for('job/edit?id='.$job-> getId ())?> " >
+    <a href= "<?php echo url_for('job_edit',$job)?> " >
       Editar
     </a>
   </div>
