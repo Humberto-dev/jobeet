@@ -95,6 +95,8 @@ class jobActions extends sfActions
     if ($form->isValid())
     {
       $job = $form->save();
+      var_dump($job);
+      exit;
 
       $this->redirect($this->generateUrl('job_show',$job));
     }
