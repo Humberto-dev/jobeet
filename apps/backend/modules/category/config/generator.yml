@@ -18,7 +18,8 @@ generator:
         title: Category Management
         display: [=name, slug]
         object_actions: {}
-      filter:  ~
+      filter:  
+        class: false
       form:    ~
       edit:    
         title: Editing Category "%%name%%"

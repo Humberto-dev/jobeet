@@ -6778,3 +6778,16 @@ Sep 10 15:15:53 symfony [info] {sfWebDebugLogger} Database (Doctrine) 25.39 ms (
 Sep 10 15:15:53 symfony [info] {sfWebDebugLogger} View "Success" for "job/show" 78.12 ms (1)
 Sep 10 15:15:53 symfony [info] {sfWebDebugLogger} Partial "job/_admin" 16.60 ms (1)
 Sep 10 15:15:54 symfony [info] {sfWebResponse} Send content (40601 o)
+Sep 25 01:39:42 symfony [info] {sfPatternRouting} Match route "job_edit" (/job/:token/edit.:sf_format) for /job/job_125/edit with parameters array (  'module' => 'job',  'action' => 'edit',  'sf_format' => 'html',  'token' => 'job_125',)
+Sep 25 01:39:42 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Sep 25 01:39:42 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Sep 25 01:39:42 symfony [info] {jobActions} Call "jobActions->executeEdit()"
+Sep 25 01:39:42 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Sep 25 01:39:42 symfony [info] {Doctrine_Connection_Statement} execute : SELECT j.id AS j__id, j.category_id AS j__category_id, j.type AS j__type, j.company AS j__company, j.logo AS j__logo, j.url AS j__url, j.position AS j__position, j.location AS j__location, j.description AS j__description, j.how_to_apply AS j__how_to_apply, j.token AS j__token, j.is_public AS j__is_public, j.is_activated AS j__is_activated, j.email AS j__email, j.expires_at AS j__expires_at, j.created_at AS j__created_at, j.updated_at AS j__updated_at FROM jobeet_job j WHERE (j.token = ?) - (job_125)
+Sep 25 01:39:42 symfony [err] {sfError404Exception} This request has been forwarded to a 404 error page by the action "job/edit".
+Sep 25 01:39:43 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Sep 25 01:39:43 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Sep 25 01:39:43 symfony [info] {sfWebDebugLogger} Configuration 2831.55 ms (8)
+Sep 25 01:39:43 symfony [info] {sfWebDebugLogger} Factories 1972.31 ms (1)
+Sep 25 01:39:43 symfony [info] {sfWebDebugLogger} Action "job/edit" 648.63 ms (1)
+Sep 25 01:39:43 symfony [info] {sfWebDebugLogger} Database (Doctrine) 6.00 ms (2)

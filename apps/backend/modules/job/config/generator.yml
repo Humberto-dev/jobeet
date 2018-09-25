@@ -22,7 +22,7 @@ generator:
          is_public: { label: "Public? (label for the list)" }    
         title:   Job Management
         layout:  stacked
-        display: [company, position, location, url, is_activated, email]
+        display: [company, position, location, url, is_activated?, email]
         params:  |
            %%is_activated%% <small>%%jobeet_category%%</small> - %%company%%
             (<em>%%email%%</em>) is looking for a %%=position%% (%%location%%)
@@ -35,12 +35,14 @@ generator:
           _edit:   ~
           delete:  ~ 
         actions: 
-          deleteNeverActivated: {label: Delete never activated job, action: foo}  
+          deleteNeverActivated: {label: Delete never activated job}  
         table_method: retrieveBackendJobList     
-      filter:  ~
-      form:    
+      filter:  
+        display: [category_id, company, position, description, is_activated, is_public, email, expires_at]
+      form:
+        class: BackendJobeetJobForm    
         display:
-          Content: [category_id, type, company, logo, url, position, location, description, how_to_Apply, is_public, email]
+          Content: [category_id, type, company, logo, url, position, location, description, how_to_apply, is_public, email]
           Admin: [_generated_token, is_activated, expires_at]
       edit:    
         title: Editing Job "%%company%% is looking for a %%position%%"
