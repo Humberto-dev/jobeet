@@ -163,24 +163,6 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
       sfContext::getInstance()->getResponse()->setCookie($remember_cookie, $key, time() + $expiration_age);
     }
   }
-  
-   public function signInOnly($userEmail, $remember = false, $con = null)
-  {
-        // signin
-        $user = Doctrine_Query::create()
-        -> from('sfGuardUser su')
-        ->where("su.email_address='".$userEmail."'")->fetchOne();
-       
-        $this->setAttribute('user_id', $user->getId(), 'sfGuardSecurityUser');
-        $this->setAuthenticated(true);
-        $this->clearCredentials();
-        $this->addCredentials($user->getAllPermissionNames());
-
-        // save last login
-        $user->setLastLogin(date('Y-m-d H:i:s'));
-        $user->save($con);
-
-  }
 
   /**
    * Returns a random generated key.
@@ -206,8 +188,6 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
     $expiration_age = sfConfig::get('app_sf_guard_plugin_remember_key_expiration_age', 15 * 24 * 3600);
     $remember_cookie = sfConfig::get('app_sf_guard_plugin_remember_cookie_name', 'sfRemember');
     sfContext::getInstance()->getResponse()->setCookie($remember_cookie, '', time() - $expiration_age);
-    
-    session_destroy();
   }
 
   /**

@@ -23,7 +23,7 @@ class sfGuardValidatorUser extends sfValidatorBase
     $this->addOption('password_field', 'password');
     $this->addOption('throw_global_error', false);
 
-    $this->setMessage('invalid', 'El usuario y/o password es invalido.');
+    $this->setMessage('invalid', 'The username and/or password is invalid.');
   }
 
   protected function doClean($values)
